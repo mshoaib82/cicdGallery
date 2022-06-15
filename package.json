@@ -4,11 +4,12 @@
   "description": "## A. Scenario",
   "main": "index.js",
   "scripts": {
+    "start": "webpack server --open --mode development",
     "lint": "eslint '**/*.js'",
     "lint-watch": "nodemon --exec 'npm run lint --silent'",
     "test": "jest",
     "lint:fix": "eslint --fix --ext .js,.jsx .",
-    "build": "webpack"
+    "build": "webpack server --open --mode production"
   },
   "repository": {
     "type": "git",
@@ -28,7 +29,15 @@
     "@babel/core": "^7.18.5",
     "@babel/preset-env": "^7.18.2",
     "babel-jest": "^28.1.1",
-    "webpack": "^5.73.0",
-    "webpack-cli": "^4.10.0"
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
+    "node-sass": "^7.0.1",
+    "nodemon": "^2.0.16",
+    "postcss-loader": "^7.0.0",
+    "postcss-preset-env": "^7.7.1",
+    "sass-loader": "^13.0.0",
+    "style-loader": "^3.3.1",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.2"
   }
 }
