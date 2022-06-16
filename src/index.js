@@ -1,28 +1,51 @@
 import fetcher from './fetcher';
 import './style.scss';
-
 window.localStorage.clear();
 
+//instead of html file:
 const nav = document.createElement('nav');
-nav.innerHTML = '<h1>This is the LOGO...<h1>';
-
 const divSearch = document.createElement('div');
-
 const searchBar = document.createElement('input');
+const btnSearch = document.createElement('button');
+const photoBlock = document.createElement('section');
+const prevBtn = document.createElement('button');
+const nextBtn = document.createElement('button');
+const btnContainer = document.createElement('div');
+const scrollMenu = document.createElement('div');
+const footer = document.createElement('footer');
+const githubLink = 'https://github.com/saltsthlm/jsfs-summer-22-lab-cicdGallery/blob/main/README-step-1.md';
+
+nav.innerHTML = '<h1>APOLLO Picture Search<h1>';
+
 searchBar.type = 'text';
 searchBar.className = 'searchBar';
 searchBar.placeholder = 'Search for';
-divSearch.append(searchBar);
-
-const btnSearch = document.createElement('button');
 btnSearch.textContent = 'Search';
 btnSearch.className = 'searchBtn';
+
+btnContainer.className = 'btn-container';
+prevBtn.textContent = 'prev';
+nextBtn.textContent = 'next';
+
+scrollMenu.innerHTML = '<h1>Scrol menu</h1>';
+footer.innerHTML = `<a href= ${githubLink}>Github logo link</a>`;
+
+btnContainer.append(prevBtn);
+btnContainer.append(nextBtn);
+divSearch.append(searchBar);
 divSearch.append(btnSearch);
 
-const photoBlock = document.createElement('section');
+const app = document.querySelector('body');
+app.append(nav);
+app.append(divSearch);
+app.append(photoBlock);
+app.append(btnContainer);
+app.append(footer);
+
 
 let pageNr = 0;
 const recArr = [];
+
 btnSearch.addEventListener('click', async () => {
   // clear the imgs from before
   const inputVal = searchBar.value;
@@ -30,7 +53,7 @@ btnSearch.addEventListener('click', async () => {
     await fetcher(inputVal, photoBlock, pageNr);
     // window.localStorage.setItem(pageNr+1,photoBlock.innerHTML);
     // <section>img1 img2 img3</section>
-
+    
     photoBlock.innerHTML = '';
     pageNr += 1;
     // console.log('pageNr after one search '+pageNr);
@@ -45,8 +68,6 @@ btnSearch.addEventListener('click', async () => {
 
 // div with buttons for PREV AND NEXT
 // const paBtnContainer = document.createElement('div');
-const prevBtn = document.createElement('button');
-prevBtn.textContent = 'prev';
 
 prevBtn.addEventListener('click', () => {
   if (pageNr > 1) {
@@ -59,13 +80,6 @@ prevBtn.addEventListener('click', () => {
   }
 });
 
-const nextBtn = document.createElement('button');
-nextBtn.textContent = 'next';
-
-const btnContainer = document.createElement('div');
-btnContainer.className = 'btn-container';
-btnContainer.append(prevBtn);
-btnContainer.append(nextBtn);
 
 nextBtn.addEventListener('click', () => {
   const nextPageNr = Number(pageNr) + 1;
@@ -78,23 +92,12 @@ nextBtn.addEventListener('click', () => {
   }
 });
 
-const scrollMenu = document.createElement('div');
-scrollMenu.innerHTML = '<h1>Scrol menu</h1>';
 // searchBar.addEventListener('click', autocomplete(recArr, scrollMenu));
 
 // FOOTER with GITHUB
 //! !!!!!  link to github,  SPA ???
-const githubLink = 'https://github.com/saltsthlm/jsfs-summer-22-lab-cicdGallery/blob/main/README-step-1.md';
-const footer = document.createElement('footer');
-footer.innerHTML = `<a href= ${githubLink}>Github logo link</a>`;
 
 // Append heading node to the DOM
-const app = document.querySelector('body');
-app.append(nav);
-app.append(divSearch);
-// app.append(autoForm);
-app.append(photoBlock);
-app.append(btnContainer);
-app.append(footer);
 
+// app.append(autoForm);
 // localStorage:  {pages:'{1:ddd,2:sss,...}', recommendation: '[r1,r2,r3]'}
