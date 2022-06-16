@@ -1,16 +1,18 @@
 /* Fetch API */
 const fetcher = async (inputVal, imageDiv, pageNr) => {
+  const imgDiv = imageDiv;
   const url = `https://api.unsplash.com/search/photos?query=${inputVal}&per_page=10&client_id=gK52De2Tm_dL5o1IXKa9FROBAJ-LIYqR41xBdlg3X2k`;
   fetch(url)
     .then(response => response.json())
     .then(data => {
       if (data.results.length === 0) {
-        return imageDiv.textContent = 'Image not found!';
+        imgDiv.textContent = 'Image not found!';
+        return;
       }
       for (let i = 0; i < data.results.length; i++) {
         const imageElement = document.createElement('img');
         imageElement.src = data.results[i].urls.small;
-        imageDiv.append(imageElement);
+        imgDiv.append(imageElement);
       }
       // console.log('The fetcher is working!');
 
@@ -25,9 +27,9 @@ const fetcher = async (inputVal, imageDiv, pageNr) => {
         // if the pages property exist in localstorage already
         pagesObj = JSON.parse(window.localStorage.getItem('pages')); // {1:a, 2:b, 3:c}
       }
-      pagesObj[nextPageNr] = imageDiv.innerHTML; /// /{1:a, 2:b, 3:c, 4:xxxx}
-      window.localStorage.setItem('pages', JSON.stringify(pagesObj)); // {'pages': '{1:a, 2:b, 3:c, 4:xxxx}', ......
-      // console.log('test pages value length: '+ Object.keys(JSON.parse(window.localStorage.getItem('pages'))).length  );
+      pagesObj[nextPageNr] = imgDiv.innerHTML; /// /{1:a, 2:b, 3:c, 4:xxxx}
+      window.localStorage.setItem('pages', JSON.stringify(pagesObj));
+      // {'pages': '{1:a, 2:b, 3:c, 4:xxxx}', ......
     }); // localstorage: {'pages': '{....}', 'recommandations':'['cats','dogs','birds']'}
 };
 export default fetcher;
