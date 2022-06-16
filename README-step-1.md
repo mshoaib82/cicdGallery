@@ -21,6 +21,8 @@ You will not be working towards our repository this time. Instead, you'll set up
 
 ### Tech stack specifications
 
+
+// we are not 
 The project _must_:
 
 1. Be linted using the salt-config-eslint package.
