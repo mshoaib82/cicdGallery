@@ -1,8 +1,9 @@
 import fetcher from './fetcher';
 import './style.scss';
+
 window.localStorage.clear();
 
-//instead of html file:
+// instead of html file:
 const nav = document.createElement('nav');
 const divSearch = document.createElement('div');
 const searchBar = document.createElement('input');
@@ -42,7 +43,6 @@ app.append(photoBlock);
 app.append(btnContainer);
 app.append(footer);
 
-
 let pageNr = 0;
 const recArr = [];
 
@@ -53,7 +53,7 @@ btnSearch.addEventListener('click', async () => {
     await fetcher(inputVal, photoBlock, pageNr);
     // window.localStorage.setItem(pageNr+1,photoBlock.innerHTML);
     // <section>img1 img2 img3</section>
-    
+
     photoBlock.innerHTML = '';
     pageNr += 1;
     // console.log('pageNr after one search '+pageNr);
@@ -79,7 +79,6 @@ prevBtn.addEventListener('click', () => {
     // console.log(`pageNr after clicking prev ${pageNr}`);
   }
 });
-
 
 nextBtn.addEventListener('click', () => {
   const nextPageNr = Number(pageNr) + 1;
