@@ -27,5 +27,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run linter
-        uses: action-eslint@v2
-
+        run: npm run lint
