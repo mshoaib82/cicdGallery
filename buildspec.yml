@@ -5,15 +5,15 @@ phases:
       - curl -sL https://deb.nodesource.com/setup_12.x | bash -
       - apt install -y nodejs
       - echo Installing NPM...
-      
+
   pre_build:
     commands:
       - echo Installing dependencies...
       - npm install
   build:
     commands:
-      - echo Testing...
-      - npm run test
+      - echo Linter...
+      - npm run lint
       - echo Building...
       - npm run build
 artifacts:
