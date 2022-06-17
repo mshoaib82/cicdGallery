@@ -16,6 +16,7 @@ module.exports = {
       title: 'webpack Boilerplate',
       filename: 'index.html', // output file
     }),
+    
   ],
   module: {
     rules: [
