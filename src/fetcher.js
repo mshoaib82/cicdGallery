@@ -32,4 +32,4 @@ const fetcher = async (inputVal, imageDiv, pageNr) => {
       // {'pages': '{1:a, 2:b, 3:c, 4:xxxx}', ......
     }); // localstorage: {'pages': '{....}', 'recommandations':'['cats','dogs','birds']'}
 };
-export default fetcher;
+module.exports={fetcher};

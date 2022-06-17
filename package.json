@@ -7,9 +7,18 @@
     "start": "webpack server --open --mode development",
     "lint": "eslint '**/*.js'",
     "lint-watch": "nodemon --exec 'npm run lint --silent'",
-    "test": "jest",
     "lint:fix": "eslint --fix --ext .js,.jsx .",
-    "build": "webpack server --open --mode production"
+    "build": "webpack server --open --mode production",
+    "test": "jest test/*.js"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "moduleNameMapper": {
+      "\\.(s?css|less)$": "identity-obj-proxy"
+    },
+    "verbose": true
   },
   "repository": {
     "type": "git",
@@ -23,7 +32,8 @@
   },
   "homepage": "https://github.com/nikkizhou/jsfs-summer-22-lab-cicdGallery#readme",
   "dependencies": {
-    "jest": "^28.1.1"
+    "jest": "^28.1.1",
+    "jsdom": "^19.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.5",
@@ -32,6 +42,8 @@
     "css-loader": "^6.7.1",
     "eslint-config-salt": "^1.2.0",
     "html-webpack-plugin": "^5.5.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest-environment-jsdom": "^28.1.1",
     "node-sass": "^7.0.1",
     "nodemon": "^2.0.16",
     "postcss-loader": "^7.0.0",
